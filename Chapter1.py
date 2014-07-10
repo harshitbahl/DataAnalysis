@@ -5,24 +5,28 @@ Created on Mon Jun 23 22:00:19 2014
 @author: harshitbahl
 """
 
+class vehicles:
+    count = 0
+    def __init__(self, value):
+        self.value = value
+        vehicles.count += 1
+    def getval(self):
+        return self.value
+    def getcount(cls):
+        return vehicles.count
+    counter = classmethod(getcount) 
+
+
+
 def main():
-    import json
-    path = '../pydata-book/ch02/usagov_bitly_data2012-03-16-1331923249.txt'
-    records = [json.loads(row) for row in open(path)]
-    records[0]
-    from pandas import DataFrame, Series
-    import pandas as pd; import numpy as np
-    frame = DataFrame(records)
-    frame
-    tz_counts = frame['tz'].value_count()
-    tz_counts = frame['tz'].value_counts()
-    tz_counts[:10]
-    clean_tz = frame['tz'].fillna('Missing')
-    clean_tz[clean_tz == '']= 'Unknow'
-    tz_counts = clean_tz.value.counts()
-    tz_counts = clean_tz.value_counts()
-    tz_counts[:10]
-    tz_counts[:10].plot(kind='barh', rot=0)
+    v1 = 'car'
+    v2 = 'Bus'
+    v3 = 'bikes'
+    type1 = vehicles(v1)
+    type2 = vehicles(v2)
+    type3 = vehicles(v3) 
+    print type1.getval(), type2.getval(), vehicles.counter(), type2.getcount()
+
 
     
     
